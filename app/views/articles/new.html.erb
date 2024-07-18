@@ -1,0 +1,31 @@
+<h1 class="my-3 text-center">Nouvel Article</h1>
+
+<section class="max-w-4xl mx-auto p-5 bg-white shadow-md rounded-lg">
+  <%= form_with model: @article, local: true, class: "space-y-4" do |form| %>
+
+    <div>
+      <%= form.label :title, "Titre de l'article", class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :title, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+    </div>
+
+    <div>
+      <%= form.label :published_at, "Date de publication", class: "block text-sm font-medium text-gray-700" %>
+      <%= form.datetime_field :published_at, value: Date.current, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+    </div>
+
+    <div>
+      <%= form.label :summary, "Résumé", class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_area :summary, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+    </div>
+
+    <div>
+      <%= form.label :content, "Contenu", class: "block text-sm font-medium text-gray-700" %>
+      <%= form.rich_text_area :content, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+    </div>
+
+    <div class="flex justify-center">
+      <%= form.submit "Publier l'Article", class: "py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    </div>
+
+  <% end %>
+</section>

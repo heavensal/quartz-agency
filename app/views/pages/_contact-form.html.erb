@@ -1,0 +1,46 @@
+<%= form_with url: contact_form_path, local: true, scope: :contact_form, html: { class: "gap-4 flex flex-col text-left text-blue" } do |form| %>
+
+  <div class="flex justify-around gap-4">
+    <div class="w-1/2">
+      <%= form.label :first_name, "Prénom", class: "block pl-2" %>
+      <%= form.text_field :first_name, autofocus: true, id: "first-name", class: "w-full border-2 border-dark transition focus:duration-150 focus:border-blue rounded-lg" %>
+    </div>
+
+    <div class="w-1/2">
+      <%= form.label :last_name, "Nom de famille", class: "block pl-2" %>
+      <%= form.text_field :last_name, id: "last_name", class: "w-full border-2 border-dark transition focus:duration-150 focus:border-blue rounded-lg" %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.label :company, "Entreprise", class: "block pl-2" %>
+    <%= form.text_field :company, id: "company", class: "w-full border-2 border-dark transition focus:duration-150 focus:border-blue rounded-lg" %>
+  </div>
+
+  <div>
+    <%= form.label :email, "Email", class: "block pl-2" %>
+    <%= form.email_field :email, id: "email", class: "w-full border-2 border-dark transition focus:duration-150 focus:border-blue rounded-lg" %>
+  </div>
+
+  <div>
+    <%= form.label :phone, "Téléphone", class: "block pl-2" %>
+    <%= form.telephone_field :phone, id: "phone", class: "w-full border-2 border-dark transition focus:duration-150 focus:border-blue rounded-lg" %>
+  </div>
+
+  <div>
+    <%= form.label :message, "Message",class: "block pl-2" %>
+    <%= form.text_area :message, id: "message", class: "w-full border-2 border-dark transition focus:duration-150 focus:border-blue rounded-lg" %>
+  </div>
+
+
+  <div class="mt-4 flex justify-center gap-4">
+
+    <button type="button" data-action="dialog#close" autofocus class="px-4 py-2 rounded border-2 bg-transparent border-gray-500 text-gray-500 transition hover:duration-150 hover:bg-gray-500 hover:text-white hover:scale-105 inline-block">
+      Annuler
+    </button>
+
+    <%= form.submit "Envoyer", data: { action: "dialog#close" },class: "px-4 py-2 rounded bg-yellow text-blue border-b-2 border-r-2 border-blue transition cursor-pointer hover:duration-150 hover:bg-blue hover:text-yellow hover:border-yellow hover:scale-105 inline-block" %>
+
+  </div>
+
+<% end %>
