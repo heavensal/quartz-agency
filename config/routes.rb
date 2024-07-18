@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   # mode admin géré par devise pour administrer les articles
   devise_for :admins
-  get '/admin', to: redirect('/admins/sign_in'), as: :admin_root
 
   namespace :admin do
     resources :articles

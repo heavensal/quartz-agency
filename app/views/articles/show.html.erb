@@ -1,13 +1,35 @@
-<h1>
-  <%= @article.title %>
-</h1>
+<% if current_admin %>
+  <div class="admin-btn text-center my-12">
+    <%= link_to 'Modifier l\'article', edit_admin_article_path(@article), class: "px-4 py-2 rounded border-2 bg-transparent border-gray-500 text-gray-500 transition hover:duration-150 hover:bg-gray-500 hover:text-white" %>
 
-<%= link_to 'Modifier l\'article', edit_article_path(@article) %>
+    <%= link_to 'Supprimer l\'article', admin_article_path(@article), data: { turbo_method: :delete }, class: "px-4 py-2 rounded bg-red-500 text-white transition hover:duration-150 hover:bg-red-800" %>
+  </div>
+<% end %>
 
-<div>
-  <%= @article.published_at.strftime("%d %B %Y") %>
-</div>
+<div class="the-article w-4/6 mx-auto my-12">
 
-<div>
-  <%= @article.content %>
+  <section class="head-of-article">
+
+    <div class="mb-4">
+      <%= link_to articles_path do %>
+        <%= image_tag 'en-arriere.png', class: "h-6 transition hover:scale-105 hover:duration-150" %>
+      <% end %>
+    </div>
+
+    <div class="text-gray-600 mb-4">
+      <span>
+        Publié le <%= @article.published_at.strftime("%d %B %Y") %>
+      </span>
+    </div>
+
+    <h1 class="text-4xl font-bold text-dark mb-8">
+      <%= @article.title %>
+    </h1>
+
+  </section>
+
+  <section class="content-of-article bg-red-">
+    <%= @article.content %>
+  </section>
+
 </div>

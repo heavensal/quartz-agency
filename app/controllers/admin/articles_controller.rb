@@ -1,6 +1,6 @@
 class Admin::ArticlesController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:edit, :update, :destroy]
 
   def new
     @article = Article.new
@@ -9,7 +9,7 @@ class Admin::ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      redirect_to articles_path
+      redirect_to article_path(@article)
       flash[:notice] = "L'article a bien été créé avec succès."
     else
       render :new
@@ -18,14 +18,12 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
     @article.update(article_params)
     if @article.save
-      redirect_to articles_path
+      redirect_to article_path(@article)
       flash[:notice] = "L'article a bien été modifié avec succès."
     else
       render :edit
@@ -34,8 +32,8 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
+    redirect_to articles_path
   end
 
   private
