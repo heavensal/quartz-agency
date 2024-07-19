@@ -15,6 +15,7 @@
   </head>
 
   <body class="bg-gradient-to-l from-sky-100 via-sky-50 to-sky-100">
+    <div data-controller="scroll-progress" class="h-2 bg-indigo-400 fixed bottom-0 z-30"></div>
 
     <% unless controller_name == 'pages' && action_name == 'home' %>
       <%= render 'layouts/navbar' %>  <!-- Remplace par le chemin vers ta navbar -->
