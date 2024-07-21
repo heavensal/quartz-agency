@@ -34,12 +34,13 @@ class Admin::ArticlesController < ApplicationController
   def destroy
     @article.destroy
     redirect_to articles_path
+    flash[:notice] = "L'article a bien été supprimé avec succès."
   end
 
   private
 
   def article_params
-    params.require(:article).permit(:title, :summary, :published_at, :content)
+    params.require(:article).permit(:title, :image, :summary, :published_at, :content)
   end
 
   def set_article

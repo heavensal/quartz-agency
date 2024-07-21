@@ -1,12 +1,14 @@
+    <div data-controller="scroll-progress" class="h-2 bg-gradient-to-r from-blue to-yellow fixed top-0 z-50"></div>
+
 <% if current_admin %>
   <div class="admin-btn text-center my-12">
     <%= link_to 'Modifier l\'article', edit_admin_article_path(@article), class: "px-4 py-2 rounded border-2 bg-transparent border-gray-500 text-gray-500 transition hover:duration-150 hover:bg-gray-500 hover:text-white" %>
 
-    <%= link_to 'Supprimer l\'article', admin_article_path(@article), data: { turbo_method: :delete }, class: "px-4 py-2 rounded bg-red-500 text-white transition hover:duration-150 hover:bg-red-800" %>
+    <%= link_to 'Supprimer l\'article', admin_article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Supprimer l'article ?"}, class: "px-4 py-2 rounded bg-red-500 text-white transition hover:duration-150 hover:bg-red-800" %>
   </div>
 <% end %>
 
-<div class="the-article w-4/6 mx-auto my-12">
+<div class="the-article w-4/5 md:w-4/6 mx-auto my-12">
 
   <section class="head-of-article">
 
@@ -15,6 +17,16 @@
         <%= image_tag 'en-arriere.png', class: "h-6 transition hover:scale-105 hover:duration-150" %>
       <% end %>
     </div>
+
+    <article class="mx-auto w-4/5 md:w-1/2 my-4 relative overflow-hidden rounded-lg shadow transition hover:scale-105 hover:duration-150 ">
+      <% if @article.image.key %>
+        <%= cl_image_tag @article.image.key, alt: article.title, class: "absolute inset-0 h-full w-full object-cover" %>
+      <% else %>
+        <%= image_tag 'https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80', alt: @article.title, class: "absolute inset-0 h-full w-full object-cover" %>
+      <% end %>
+
+    </article>
+
 
     <div class="text-gray-600 mb-4">
       <span>
@@ -28,7 +40,7 @@
 
   </section>
 
-  <section class="content-of-article bg-red-">
+  <section class="content-of-article">
     <%= @article.content %>
   </section>
 

@@ -1,0 +1,15 @@
+<% if flash[:notice].present? %>
+  <div id="flash-notice" class="notice bg-green-500 text-white fixed bottom-4 right-4 w-4/5 rounded-lg md:w-1/5 p-4 transition-opacity duration-300 ease-in-out" role="alert" data-controller="flash" data-flash-target="notice">
+    <p>
+      <%= flash[:notice] %>
+    </p>
+  </div>
+<% end %>
+
+<% if flash[:alert].present? %>
+  <div id="flash-alert" class="alert bg-red-600 text-white fixed bottom-4 right-4 w-4/5 rounded-lg md:w-1/5 p-4 transition-opacity duration-300 ease-in-out" role="alert" data-controller="flash" data-flash-target="notice">
+    <p>
+      <%= flash[:alert] %>
+    </p>
+  </div>
+<% end %>

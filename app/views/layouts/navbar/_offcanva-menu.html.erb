@@ -1,0 +1,61 @@
+<%# menu off canva sur téléphone qui s'ouvre par la droite grace au button de menu %>
+
+<!-- Menu off-canvas -->
+<div id="menu" class="fixed top-0 right-0 transform translate-x-full h-full w-4/5 bg-white shadow-md z-50 transition-transform duration-300" data-navbar--offcanva-menu-target="menu">
+
+  <div class="row-for-button text-right">
+
+    <!-- button pour fermer le menu -->
+    <button id="closeBtn" class="p-4" data-action="click->navbar--offcanva-menu#close">
+      <svg class="w-8 h-8 text-dark hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+
+  <ul class="p-4">
+
+    <li class="my-1">
+      <%= link_to 'Blog', articles_path, class: 'inline-block px-2 py-1 w-full rounded-lg hover:bg-blue hover:text-yellow duration-150' %>
+    </li>
+
+
+    <li class="my-1" data-controller="dialog" data-action="click->dialog#backdropClose">
+
+      <dialog data-dialog-target="dialog" class="py-4 px-4 rounded-lg bg-white border-r-2 border-b-2 border-blue">
+
+        <h2 class="text-2xl text-blue my-4">
+          Nous Contacter
+        </h2>
+        <%= render 'pages/contact-form' %>
+
+      </dialog>
+
+      <button type="button" data-action="dialog#open" class="text-left inline-block px-2 py-1 w-full rounded-xl hover:bg-blue hover:text-yellow duration-150">
+        Nous Contacter
+      </button>
+
+    </li>
+
+    <% if current_admin %>
+      <%# ADMIN %>
+      <li class="my-1">
+        <%= link_to 'Ecrire un Article', new_admin_article_path, class: 'inline-block px-2 py-1 w-full rounded-lg hover:bg-blue hover:text-yellow duration-150' %>
+      </li>
+
+      <%# ADMIN %>
+      <li class="my-1">
+        <%= link_to 'Se Déconnecter', destroy_admin_session_path, data: { turbo_method: :delete }, class: 'inline-block px-2 py-1 w-full rounded-xl hover:bg-red-600 hover:text-yellow duration-150' %>
+      </li>
+    <% end %>
+
+  </ul>
+
+</div>
+
+
+
+<!-- Overlay noir pour cacher l'arrière plan quand le canva est ouvert -->
+<div id="overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40" data-navbar--offcanva-menu-target="overlay" data-action="click->navbar--offcanva-menu#close"></div>
