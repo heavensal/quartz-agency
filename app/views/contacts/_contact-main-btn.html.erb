@@ -1,0 +1,11 @@
+<%# app/views/contacts/_contact-main-btn.html.erb %>
+
+<div data-controller="dialog" data-action="click->dialog#backdropClose">
+
+  <%= render 'contacts/dialog' %>
+
+  <button type="button" data-action="dialog#open" class="px-4 py-4 rounded bg-yellow text-blue border-b-2 border-r-2 border-blue transition hover:duration-150 hover:bg-blue hover:text-yellow hover:border-yellow hover:scale-105 inline-block">
+    Nous Contacter
+  </button>
+
+</div>
